@@ -104,7 +104,7 @@ with st.sidebar:
         uploaded_file = st.file_uploader("Выбрать CSV файл", type=['csv', 'xlsx'], on_change=reset_session_state)
         if uploaded_file is not None:
             treshold = st.slider('Порог вероятности оттока', 0.0, 1.0, 0.5, 0.01, key='slider1')
-            prediction_button = st.button('Предсказать', type='primary', use_container_width=True)
+            prediction_button = st.button('Предсказать', type='primary', use_container_width=True, key='button1')
             st.session_state['df_input'] = pd.read_csv(uploaded_file)
             if prediction_button:
                 # Предсказание и сохранение в session state
@@ -137,7 +137,7 @@ with st.sidebar:
         # Если введен ID клиента, то показываем слайдер с порогом и кнопку предсказания
         if customer_id != '':
             treshold = st.slider('Порог вероятности оттока', 0.0, 1.0, 0.5, 0.01, key='slider2')
-            prediction_button_tab2 = st.button('Предсказать', type='primary', use_container_width=True)
+            prediction_button_tab2 = st.button('Предсказать', type='primary', use_container_width=True, key='button2')
             
             if prediction_button_tab2:
                 st.session_state['tab_selected'] = 'tab2'
